@@ -1,0 +1,16 @@
+from flask import Flask, render_template, request
+from services import Parser
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Hello world'
+
+@app.route('/start_parse')
+def index():
+    Parser.start()
+    return 'parsing started'
+
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port='8003')
